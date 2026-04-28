@@ -685,7 +685,7 @@ else
 	exit 1
 fi
 echo "CFLAGS += $(pkg-config --cflags libssl)" >>$CONFIG_MK
-echo "LDFLAGS +=        $(pkg-config --libs libssl)" >>$CONFIG_MK
+echo "LDFLAGS +=        $(pkg-config --libs libssl)  $(pkg-config --libs libcrypto)" >>$CONFIG_MK
 echo "STATIC_LIBS +=    $(pkg-config --libs --static libssl)" \
 	>>$CONFIG_MK
 
