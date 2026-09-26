@@ -106,11 +106,11 @@ xbps_pkg_exec_buffer(struct xbps_handle *xhp,
 	close(fd);
 
 	/* exec script */
-	if (!xbps_pkg_name(pkgname, sizeof(pkgname), pkgver)) {
-		abort();
-	}
+	if (!xbps_pkg_name(pkgname, sizeof(pkgname), pkgver))
+		xbps_unreachable();
 	version = xbps_pkg_version(pkgver);
-	assert(version);
+	if (!version)
+		xbps_unreachable();
 
 	// find a shell that can be used to execute the script.
 	for (i = 0; shells[i] != NULL; i++) {
